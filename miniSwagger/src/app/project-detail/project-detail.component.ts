@@ -16,13 +16,13 @@ import { ModelService } from '../model.service';
   styleUrls: ['./project-detail.component.css']
 })
 export class ProjectDetailComponent implements OnInit {
-  project: Project | undefined;
-  projectId: string = this.route.snapshot.paramMap.get('id') || ''
-  resources: Resource[] = []
-  displayedColumns: string[] = ['name', 'type', 'description', 'url'];
-  filterData: Resource[] = []
-  term: string = ''
-  model: any = {}
+  public project: Project | undefined;
+  public projectId: string = this.route.snapshot.paramMap.get('id') || ''
+  public resources: Resource[] = []
+  public displayedColumns: string[] = ['name', 'type', 'description', 'url'];
+  public filterData: Resource[] = []
+  public term: string = ''
+  public model: any = {}
 
   constructor(private route: ActivatedRoute,
     private projectService: ProjectsService,

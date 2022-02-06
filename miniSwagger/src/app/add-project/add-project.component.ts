@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProjectsService } from '../projects.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -7,10 +7,10 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './add-project.component.html',
   styleUrls: ['./add-project.component.css']
 })
-export class AddProjectComponent implements OnInit {
-  projectName: string = ''
-  baseUrl: string = ''
-  description: string = ''
+export class AddProjectComponent {
+  public projectName: string = ''
+  public baseUrl: string = ''
+  public description: string = ''
 
   constructor(private projectService: ProjectsService,
     public dialogRef: MatDialogRef<AddProjectComponent>,
@@ -23,8 +23,5 @@ export class AddProjectComponent implements OnInit {
 
   addProject() {
     this.projectService.addProject(this.projectName, this.baseUrl, this.description)
-  }
-
-  ngOnInit(): void {
   }
 }

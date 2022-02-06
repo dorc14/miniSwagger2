@@ -2,23 +2,26 @@
     <h1 class="whiteColor"> Welcome to Project Page!!</h1>
     <h2 class="whiteColor"> Update your project information</h2>
     <div>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field class="input-full-width" appearance="fill">
             <mat-label for="project-name">Project Name</mat-label>
+
             <input class="whiteColor" matInput id="project-name" [(ngModel)]="project.name"
                 placeholder="project name" />
         </mat-form-field>
     </div>
     <div>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field class="input-full-width" appearance="fill">
             <mat-label for="project-baseUrl">Base url</mat-label>
+
             <input class="whiteColor" matInput id="project-baseUrl" [(ngModel)]="project.baseUrl"
                 placeholder="Project baseUrl" />
         </mat-form-field>
     </div>
 
     <div>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field class="input-full-width" appearance="fill">
             <mat-label for="project-Description">Description</mat-label>
+
             <input class="whiteColor" matInput id="project-Description" [(ngModel)]="project.description"
                 placeholder="Project Description" />
         </mat-form-field>
@@ -26,6 +29,7 @@
     <button mat-raised-button color="warn" title="delete project" (click)="deleteProject(project.Id)">Delete
         Project</button>
     <button mat-raised-button color="accent" title="update project" (click)="updateProject()">Update Project</button>
+
     <button mat-raised-button color="accent" title="Add Resource" (click)="openAddResourceDialog()">Add
         Resource</button>
     <button mat-raised-button color="accent" title="Add Model" (click)="openModelDialog()">Add Model</button>
@@ -34,12 +38,14 @@
         <div class="mat-elevation-z8 first background">
             <mat-form-field appearance="standard">
                 <mat-label>Search resource</mat-label>
+
                 <input matInput (keyup)="applyFilter($event)" placeholder="search resource" #input>
             </mat-form-field>
 
             <mat-table [dataSource]="filterData" class="mat-elevation-z8">
                 <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
                     <mat-header-cell mat-header-cell *matHeaderCellDef> {{column}} </mat-header-cell>
+
                     <mat-cell matRipple matRipple mat-cell *matCellDef="let resource"
                         [routerLink]="['/resource/', resource.Id]">
                         {{resource[column]}}
@@ -47,6 +53,7 @@
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                
                 <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
                 <mat-row class="mat-row" *matNoDataRow>

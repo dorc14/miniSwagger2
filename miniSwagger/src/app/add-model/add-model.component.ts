@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl } from '@angular/forms';
+import { FormArray, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ModelService } from '../model.service';
 
@@ -10,46 +10,46 @@ import { ModelService } from '../model.service';
 })
 
 export class AddModelComponent implements OnInit {
-  fields: FormArray = new FormArray([])
-  types: FormArray = new FormArray([])
-  selectValue: string = ''
-  model: any = {}
-  projectId: string = ''
+  public fields: FormArray = new FormArray([])
+  public types: FormArray = new FormArray([])
+  public selectValue: string = ''
+  public model: any = {}
+  public projectId: string = ''
 
   constructor(public dialogRef: MatDialogRef<AddModelComponent>,
     private modelService: ModelService) { }
 
   ngOnInit(): void {
-    this.fields.push(new FormControl(""))
-    this.types.push(new FormControl(""))
+    this.fields.push(new FormControl("", [Validators.required]))
+    this.types.push(new FormControl("", [Validators.required]))
   }
 
-  addInfo(index: number) {
-    this.fields.push(new FormControl(""))
-    this.types.push(new FormControl(""))
-    this.setValue(index)
+  addModelInformation(index: number) {
+    this.fields.push(new FormControl("", [Validators.required]))
+    this.types.push(new FormControl("", [Validators.required]))
+    this.setTypeValue(index)
   }
 
-  removeInfo(index: number) {
+  removeModelInformation(index: number) {
     this.fields.removeAt(index)
     this.types.removeAt(index)
   }
 
-  setValue(index: number) {
+  setTypeValue(index: number) {
     this.types.controls[index].setValue(this.selectValue)
   }
 
-  setLastItem() {
+  setLastType() {
     this.types.controls[this.types.controls.length - 1].setValue(this.selectValue)
   }
 
-  addModel() {
-    this.setLastItem()
+  createModel() {
+    this.setLastType()
     this.modelService.addModel(this.projectId, this.fields, this.types)
   }
 
   onSubmit() {
-    this.addModel()
+    this.createModel()
     this.model = this.modelService.getModelByProjectId(this.projectId)
     this.dialogRef.close();
   }

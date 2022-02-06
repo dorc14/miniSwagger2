@@ -4,27 +4,32 @@
             <td class="form-group" [formGroup]="fields">
                 <mat-form-field class=" example-full-width" appearance="fill">
                     <mat-label>Field name</mat-label>
+
                     <input class="form-control" matInput [formControlName]='i'>
                 </mat-form-field>
             </td>
             <td class="form-group" [formGroup]="types">
                 <mat-form-field appearance="fill">
                     <mat-label>Choose a type</mat-label>
+
                     <mat-select class="form-control" [(ngModel)]="selectValue" [ngModelOptions]="{standalone: true}">
                         <mat-option value="string">string</mat-option>
+
                         <mat-option value="number">number</mat-option>
+
                         <mat-option value="boolean">boolean</mat-option>
+                        
                         <mat-option value="array">array</mat-option>
                     </mat-select>
                 </mat-form-field>
             </td>
             <td>
-                <button mat-mini-fab #tooltip="matTooltip" matTooltip="Add Field" (click)='addInfo(i)'>
+                <button mat-mini-fab #tooltip="matTooltip" matTooltip="Add Field" (click)='addModelInformation(i)'>
                     <mat-icon>add</mat-icon>
                 </button>
             </td>
             <td>
-                <button mat-mini-fab #tooltip="matTooltip" matTooltip="Delete Field" (click)='removeInfo(i)'>
+                <button mat-mini-fab #tooltip="matTooltip" matTooltip="Delete Field" (click)='removeModelInformation(i)'>
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>

@@ -11,8 +11,8 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./resource-detail.component.css']
 })
 export class ResourceDetailComponent implements OnInit {
-  resource: Resource | undefined;
-  resourceId: string = ''
+  public resource: Resource | undefined;
+  public resourceId: string = ''
 
   constructor(private route: ActivatedRoute,
     private resourceService: ResourcesService,

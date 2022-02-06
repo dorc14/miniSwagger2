@@ -17,14 +17,14 @@ import { ResourceDetailComponent } from '../resource-detail/resource-detail.comp
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
-  projectName: string = ''
-  baseUrl: string = ''
-  Description: string = ''
-  projects: Project[] = []
-  resources: Resource[] = []
-  filterData: Resource[] = []
-  term: string = ''
-  model: any = {}
+  public projectName: string = ''
+  public baseUrl: string = ''
+  public Description: string = ''
+  public projects: Project[] = []
+  public resources: Resource[] = []
+  public filterData: Resource[] = []
+  public term: string = ''
+  public model: any = {}
 
   constructor(private projectService: ProjectsService, public dialog: MatDialog,
     private resourceService: ResourcesService, private modelService: ModelService,

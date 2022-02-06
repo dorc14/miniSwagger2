@@ -14,16 +14,19 @@
                 </mat-expansion-panel-header>
                 <mat-form-field appearance="standard">
                     <mat-label>Search resource</mat-label>
+
                     <input matInput (keyup)="applyFilter($event)" placeholder="search resource" #input>
                 </mat-form-field>
                 <mat-table [dataSource]="filterData" class="mat-elevation-z8">
                     <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
                         <mat-header-cell mat-header-cell *matHeaderCellDef> {{column}} </mat-header-cell>
+
                         <mat-cell matRipple matRipple mat-cell *matCellDef="let resource" (click)='openEditResourceDialog(resource.Id)'>
                             {{resource[column]}}
                         </mat-cell>
                     </ng-container>
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    
                     <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
                 </mat-table>
                 <button mat-raised-button color="warn" title="delete project" (click)="deleteProject(project.Id)">Delete

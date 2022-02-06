@@ -14,8 +14,8 @@ export class EditProjectComponent implements OnInit {
   constructor(private projectService: ProjectsService,
     public dialogRef: MatDialogRef<EditProjectComponent>) { }
 
-  project: Project | undefined;
-  projectId: string = ''
+  public project: Project | undefined;
+  public projectId: string = ''
 
   ngOnInit(): void {
     this.getProject()
