@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Resource } from 'src/resource';
 import { ResourcesService } from '../resources.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ShowErrorComponent } from '../show-error/show-error.component';
 
 @Component({
   selector: 'app-resource-detail',
@@ -16,7 +17,8 @@ export class ResourceDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private resourceService: ResourcesService,
-    public dialogRef: MatDialogRef<ResourceDetailComponent>) { }
+    public dialogRef: MatDialogRef<ResourceDetailComponent>,
+    private snackBar: ShowErrorComponent) { }
 
   getResource(): void {
     try {
@@ -25,8 +27,8 @@ export class ResourceDetailComponent implements OnInit {
         this.resource = result
       })
     }
-    catch (err) {
-      console.log(err)
+    catch (err: any) {
+      this.snackBar.openSnackBar(err.message);
     }
   }
 

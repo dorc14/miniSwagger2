@@ -8,15 +8,15 @@ import { of } from 'rxjs';
 export class ModelService {
 
   constructor() { }
-
+  projectIdKey: string = 'projectId'
   models: any[] = JSON.parse(localStorage.getItem('Models') || '[]');
 
   addModel(projectId: string, fields: FormArray, types: FormArray) {
     const model = this.getModelByProjectId(projectId) || {}
 
     if (Object.keys(model).length == 0) {
-      model['projectId'] = projectId
-    } 
+      model[this.projectIdKey] = projectId
+    }
 
     this.createDynamicJson(model, fields, types)
 
@@ -35,7 +35,7 @@ export class ModelService {
     return this.models.filter(model => model.projectId == projectId)[0]
   }
 
-  createDynamicJson(model: any, fields: FormArray, types: FormArray) {
+  createDynamicJson(model: Array<any>, fields: FormArray, types: FormArray) {
     fields.controls.map((field, index) => {
       model[field.value] = types.controls[index].value
     })

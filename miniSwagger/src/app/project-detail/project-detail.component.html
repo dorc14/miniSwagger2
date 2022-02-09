@@ -1,6 +1,8 @@
-<div *ngIf="project">
+<div *ngIf="project" else elseBlock>
     <h1 class="whiteColor"> Welcome to Project Page!!</h1>
+
     <h2 class="whiteColor"> Update your project information</h2>
+
     <div>
         <mat-form-field class="input-full-width" appearance="fill">
             <mat-label for="project-name">Project Name</mat-label>
@@ -9,6 +11,7 @@
                 placeholder="project name" />
         </mat-form-field>
     </div>
+
     <div>
         <mat-form-field class="input-full-width" appearance="fill">
             <mat-label for="project-baseUrl">Base url</mat-label>
@@ -26,6 +29,7 @@
                 placeholder="Project Description" />
         </mat-form-field>
     </div>
+
     <button mat-raised-button color="warn" title="delete project" (click)="deleteProject(project.Id)">Delete
         Project</button>
     <button mat-raised-button color="accent" title="update project" (click)="updateProject()">Update Project</button>
@@ -53,7 +57,7 @@
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                
+
                 <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
                 <mat-row class="mat-row" *matNoDataRow>
@@ -62,7 +66,10 @@
             </mat-table>
         </div>
     </div>
+
     <div *ngFor="let field of model | keyvalue">
-       <b> {{field.key}}</b> : <b>{{field.value}}</b>
+        <b> {{field.key}}</b> : <b>{{field.value}}</b>
     </div>
 </div>
+
+<ng-template #elseBlock>No Project selected</ng-template>

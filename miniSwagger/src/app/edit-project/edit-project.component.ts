@@ -26,7 +26,7 @@ export class EditProjectComponent implements OnInit {
   }
 
   getProject(): void {
-    const Id = this.projectId
+    const Id : string = this.projectId
     this.projectService.getProject(Id).subscribe(result => {
       this.project = result
     })

@@ -1,4 +1,4 @@
-<div *ngIf="resource">
+<div *ngIf="resource" else elseBlock>
     <h1> Welcome to Resource Page!!</h1>
 
     <h2> Update your Resource information</h2>
@@ -19,8 +19,9 @@
     <div>
         <mat-form-field color="accent" class="input-full-width" appearance="fill">
             <mat-label for="resource-Description">Resource Description: </mat-label>
-            
-            <input matInput matInput id="resource-Description" [(ngModel)]="resource.description" placeholder="resource Description" />
+
+            <input matInput matInput id="resource-Description" [(ngModel)]="resource.description"
+                placeholder="resource Description" />
         </mat-form-field>
     </div>
 
@@ -31,6 +32,9 @@
         </mat-form-field>
     </div>
 
-    <button mat-raised-button color="warn" title="delete project" (click)="deleteProject(resource.Id)">delete Resource</button>
+    <button mat-raised-button color="warn" title="delete project" (click)="deleteProject(resource.Id)">delete
+        Resource</button>
     <button mat-raised-button color="primary" (click)="updateProject()">Update Project</button>
 </div>
+
+<ng-template #elseBlock>No Resource selected</ng-template>

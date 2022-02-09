@@ -30,8 +30,6 @@ export class ProjectsComponent implements OnInit {
     private resourceService: ResourcesService, private modelService: ModelService,
   ) { }
 
-  step = 0;
-
   displayedColumns: string[] = ['name', 'type', 'description', 'url'];
 
   openAddProjectDialog() {
@@ -47,17 +45,6 @@ export class ProjectsComponent implements OnInit {
     this.projectService.getProjects().subscribe(result => {
       this.projects = result
     })
-  }
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
   }
 
   getResourcesToProject(projectId: string) {

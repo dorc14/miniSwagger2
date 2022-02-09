@@ -8,6 +8,7 @@
                     <input class="form-control" matInput [formControlName]='i'>
                 </mat-form-field>
             </td>
+
             <td class="form-group" [formGroup]="types">
                 <mat-form-field appearance="fill">
                     <mat-label>Choose a type</mat-label>
@@ -23,6 +24,7 @@
                     </mat-select>
                 </mat-form-field>
             </td>
+
             <td>
                 <button mat-mini-fab #tooltip="matTooltip" matTooltip="Add Field" (click)='addModelInformation(i)'>
                     <mat-icon>add</mat-icon>
@@ -33,6 +35,7 @@
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>
+            
         </tr>
     </table>
     <button mat-raised-button type="submit" color="primary" (click)='onSubmit()'>Submit</button>

@@ -27,6 +27,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { CommonModule } from '@angular/common';
 import { EditProjectComponent } from './edit-project/edit-project.component'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ShowErrorComponent } from './show-error/show-error.component';
 
 
 
@@ -41,6 +43,7 @@ import { EditProjectComponent } from './edit-project/edit-project.component'
     ResourceDetailComponent,
     AddModelComponent,
     EditProjectComponent,
+    ShowErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,9 +65,9 @@ import { EditProjectComponent } from './edit-project/edit-project.component'
     MatPaginatorModule,
     MatRippleModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,12 +9,14 @@ import { ResourcesService } from '../resources.service';
 import { AddResourceComponent } from '../add-resource/add-resource.component';
 import { Resource } from 'src/resource';
 import { ModelService } from '../model.service';
+import { ShowErrorComponent } from '../show-error/show-error.component';
 
 @Component({
   selector: 'app-project-detail',
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.css']
 })
+
 export class ProjectDetailComponent implements OnInit {
   public project: Project | undefined;
   public projectId: string = this.route.snapshot.paramMap.get('id') || ''
@@ -29,7 +31,14 @@ export class ProjectDetailComponent implements OnInit {
     private resourceService: ResourcesService,
     private modelService: ModelService,
     private location: Location,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private snackBar: ShowErrorComponent) { }
+
+  ngOnInit(): void {
+    this.getResourcesToProject()
+    this.getModelToProject()
+    this.filterData = this.resources
+  }
 
   applyFilter(event: Event) {
     if ((event.target as HTMLInputElement)) {
@@ -38,12 +47,6 @@ export class ProjectDetailComponent implements OnInit {
     } else {
       this.filterData = this.resources
     }
-  }
-  getProject(): void {
-    const Id = this.projectId 
-    this.projectService.getProject(Id).subscribe(result => {
-      this.project = result
-    })
   }
 
   deleteProject(Id: string) {
@@ -54,13 +57,6 @@ export class ProjectDetailComponent implements OnInit {
   updateProject(): void {
     this.projectService.updateProject()
     this.location.back();
-  }
-
-  ngOnInit(): void {
-    this.getProject()
-    this.getResourcesToProject()
-    this.getModelToProject()
-    this.filterData = this.resources
   }
 
   openModelDialog() {
@@ -78,8 +74,8 @@ export class ProjectDetailComponent implements OnInit {
       this.resourceService.getResourceByProjectId(this.projectId).subscribe(result => {
         this.resources = result
       })
-    } catch (err) {
-      console.log(err)
+    } catch (err: any) {
+      this.snackBar.openSnackBar(err.message);
     }
   }
 
@@ -88,5 +84,4 @@ export class ProjectDetailComponent implements OnInit {
     this.model = { ...newModel }
     delete this.model.projectId
   }
-  
 }
