@@ -30,7 +30,7 @@ export class ProjectDetailComponent implements OnInit {
     private projectService: ProjectsService,
     private resourceService: ResourcesService,
     private modelService: ModelService,
-    private location: Location,
+
     public dialog: MatDialog,
     private snackBar: ShowErrorComponent) { }
 
@@ -51,12 +51,10 @@ export class ProjectDetailComponent implements OnInit {
 
   deleteProject(Id: string) {
     this.projectService.deleteProject(Id)
-    this.location.back();
   }
 
   updateProject(): void {
     this.projectService.updateProject()
-    this.location.back();
   }
 
   openModelDialog() {

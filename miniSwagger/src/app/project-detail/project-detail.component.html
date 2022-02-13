@@ -1,4 +1,4 @@
-<div *ngIf="project" else elseBlock>
+<div *ngIf="project" else emptyMessage>
     <h1 class="whiteColor"> Welcome to Project Page!!</h1>
 
     <h2 class="whiteColor"> Update your project information</h2>
@@ -72,4 +72,4 @@
     </div>
 </div>
 
-<ng-template #elseBlock>No Project selected</ng-template>
+<ng-template #emptyMessage>No Project selected</ng-template>

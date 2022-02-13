@@ -21,10 +21,6 @@ export class EditProjectComponent implements OnInit {
     this.getProject()
   }
 
-  updateProject(): void {
-    this.projectService.updateProject()
-  }
-
   getProject(): void {
     const Id : string = this.projectId
     this.projectService.getProject(Id).subscribe(result => {
@@ -33,7 +29,7 @@ export class EditProjectComponent implements OnInit {
   }
 
   onSubmit() {
-    this.updateProject()
+    this.projectService.updateProject()
     this.dialogRef.close();
   }
 }

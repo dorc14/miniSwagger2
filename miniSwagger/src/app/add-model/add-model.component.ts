@@ -13,7 +13,7 @@ export class AddModelComponent implements OnInit {
   public fields: FormArray = new FormArray([])
   public types: FormArray = new FormArray([])
   public selectValue: string = ''
-  public model: any = {}
+  public model: object = {}
   public projectId: string = ''
 
   constructor(public dialogRef: MatDialogRef<AddModelComponent>,

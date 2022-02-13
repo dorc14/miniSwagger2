@@ -10,6 +10,7 @@ import { AddResourceComponent } from '../add-resource/add-resource.component';
 import { ModelService } from '../model.service';
 import { EditProjectComponent } from '../edit-project/edit-project.component';
 import { ResourceDetailComponent } from '../resource-detail/resource-detail.component';
+import { ShowErrorComponent } from '../show-error/show-error.component';
 
 @Component({
   selector: 'app-projects',
@@ -28,6 +29,7 @@ export class ProjectsComponent implements OnInit {
 
   constructor(private projectService: ProjectsService, public dialog: MatDialog,
     private resourceService: ResourcesService, private modelService: ModelService,
+    private snackBar: ShowErrorComponent
   ) { }
 
   displayedColumns: string[] = ['name', 'type', 'description', 'url'];
@@ -53,8 +55,8 @@ export class ProjectsComponent implements OnInit {
         this.resources = result
       })
       this.filterData = this.resources
-    } catch (err) {
-      console.log(err)
+    } catch (err: any) {
+      this.snackBar.openSnackBar(err.message);
     }
   }
 

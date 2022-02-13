@@ -20,9 +20,12 @@ export class ResourceDetailComponent implements OnInit {
     public dialogRef: MatDialogRef<ResourceDetailComponent>,
     private snackBar: ShowErrorComponent) { }
 
+  ngOnInit(): void {
+    this.getResource()
+  }
+
   getResource(): void {
     try {
-      console.log(this.resourceId)
       this.resourceService.getResource(this.resourceId).subscribe(result => {
         this.resource = result
       })
@@ -40,8 +43,5 @@ export class ResourceDetailComponent implements OnInit {
   updateProject(): void {
     this.resourceService.updateResource()
     this.dialogRef.close()
-  }
-  ngOnInit(): void {
-    this.getResource()
   }
 }
