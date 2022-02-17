@@ -1,8 +1,8 @@
-<form class="example-form">
-    <table class="example-full-width" cellspacing="0" *ngFor="let field of fields.controls;  index as i;">
+<form>
+    <table cellspacing="0" *ngFor="let field of fields.controls;  index as i;">
         <tr>
             <td class="form-group" [formGroup]="fields">
-                <mat-form-field class=" example-full-width" appearance="fill">
+                <mat-form-field appearance="fill">
                     <mat-label>Field name</mat-label>
 
                     <input class="form-control" matInput [formControlName]='i'>
@@ -19,7 +19,7 @@
                         <mat-option value="number">number</mat-option>
 
                         <mat-option value="boolean">boolean</mat-option>
-                        
+
                         <mat-option value="array">array</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -31,11 +31,12 @@
                 </button>
             </td>
             <td>
-                <button mat-mini-fab #tooltip="matTooltip" matTooltip="Delete Field" (click)='removeModelInformation(i)'>
+                <button mat-mini-fab #tooltip="matTooltip" matTooltip="Delete Field"
+                    (click)='removeModelInformation(i)'>
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>
-            
+
         </tr>
     </table>
     <button mat-raised-button type="submit" color="primary" (click)='onSubmit()'>Submit</button>

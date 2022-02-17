@@ -26,21 +26,20 @@ export class ProjectsComponent implements OnInit {
   public filterData: Resource[] = []
   public term: string = ''
   public model: any = {}
+  displayedColumns: string[] = ['name', 'type', 'description', 'url'];
 
   constructor(private projectService: ProjectsService, public dialog: MatDialog,
     private resourceService: ResourcesService, private modelService: ModelService,
     private snackBar: ShowErrorComponent
   ) { }
 
-  displayedColumns: string[] = ['name', 'type', 'description', 'url'];
-
-  openAddProjectDialog() {
-    this.dialog.open(AddProjectComponent)
-  }
-
   ngOnInit() {
     this.getProjects()
     this.filterData = this.resources
+  }
+
+  openAddProjectDialog() {
+    this.dialog.open(AddProjectComponent)
   }
 
   getProjects() {
@@ -83,14 +82,13 @@ export class ProjectsComponent implements OnInit {
     dialogRef.componentInstance.projectId = projectId
   }
 
-  getModelToProject(projectId: string) {
+  setModelToProject(projectId: string) {
     const newModel = this.modelService.getModelByProjectId(projectId)
-    this.model = { ...newModel }
-    delete this.model.projectId
+    this.deleteModelProperty(newModel)
   }
 
   showProjectDetails(projectId: string) {
-    this.getModelToProject(projectId)
+    this.setModelToProject(projectId)
     this.getResourcesToProject(projectId)
   }
 
@@ -102,5 +100,10 @@ export class ProjectsComponent implements OnInit {
   openEditResourceDialog(resourceId: string) {
     let EditResourceDialogRef = this.dialog.open(ResourceDetailComponent)
     EditResourceDialogRef.componentInstance.resourceId = resourceId
+  }
+
+  deleteModelProperty(newModel: object) {
+    this.model = { ...newModel }
+    delete this.model.projectId
   }
 }

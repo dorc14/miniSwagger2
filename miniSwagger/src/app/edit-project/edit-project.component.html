@@ -1,8 +1,8 @@
-<div *ngIf="project">
+<div *ngIf="project" else emptyMessage>
     <h1 class="whiteColor"> Welcome to Project Page!!</h1>
     <h2 class="whiteColor"> Update your project information</h2>
     <div>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field appearance="fill">
             <mat-label for="project-name">Project Name</mat-label>
 
             <input class="whiteColor" matInput id="project-name" [(ngModel)]="project.name"
@@ -10,7 +10,7 @@
         </mat-form-field>
     </div>
     <div>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field appearance="fill">
             <mat-label for="project-baseUrl">Base url</mat-label>
 
             <input class="whiteColor" matInput id="project-baseUrl" [(ngModel)]="project.baseUrl"
@@ -19,7 +19,7 @@
     </div>
 
     <div>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field appearance="fill">
             <mat-label for="project-Description">Description</mat-label>
 
             <input class="whiteColor" matInput id="project-Description" [(ngModel)]="project.description"
@@ -28,3 +28,5 @@
     </div>
 </div>
 <button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Submit</button>
+
+<ng-template #emptyMessage>No Project selected</ng-template>

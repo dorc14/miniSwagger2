@@ -1,24 +1,26 @@
-<form class="project-form">
+<form class="w-100">
     <p>
-        <mat-form-field color="accent" class="input-full-width" appearance="fill">
+        <mat-form-field color="accent" class="w-100" appearance="fill">
             <mat-label>Project Name</mat-label>
+
             <input matInput id="projectName" name="projectName" [(ngModel)]="projectName">
         </mat-form-field>
     </p>
     <p>
-        <mat-form-field color="accent" class="input-full-width" appearance="fill">
+        <mat-form-field color="accent" class="w-100" appearance="fill">
             <mat-label>BaseUrl</mat-label>
-            <input matInput id="baseUrl" name="baseUrl" [(ngModel)]="baseUrl">
 
+            <input matInput id="baseUrl" name="baseUrl" [(ngModel)]="baseUrl">
         </mat-form-field>
     </p>
     <p>
-        <mat-form-field color="accent" class="input-full-width" appearance="fill">
+        <mat-form-field color="accent" class="w-100" appearance="fill">
             <mat-label>Api Description</mat-label>
+
             <textarea id="description" name="description" [(ngModel)]="description" matInput
                 placeholder="The best Api EVER"></textarea>
         </mat-form-field>
     </p>
-
+    
     <button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Submit</button>
 </form>

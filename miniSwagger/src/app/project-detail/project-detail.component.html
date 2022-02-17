@@ -4,7 +4,7 @@
     <h2 class="whiteColor"> Update your project information</h2>
 
     <div>
-        <mat-form-field class="input-full-width" appearance="fill">
+        <mat-form-field class="w-100" appearance="fill">
             <mat-label for="project-name">Project Name</mat-label>
 
             <input class="whiteColor" matInput id="project-name" [(ngModel)]="project.name"
@@ -13,7 +13,7 @@
     </div>
 
     <div>
-        <mat-form-field class="input-full-width" appearance="fill">
+        <mat-form-field class="w-100" appearance="fill">
             <mat-label for="project-baseUrl">Base url</mat-label>
 
             <input class="whiteColor" matInput id="project-baseUrl" [(ngModel)]="project.baseUrl"
@@ -22,7 +22,7 @@
     </div>
 
     <div>
-        <mat-form-field class="input-full-width" appearance="fill">
+        <mat-form-field class="w-100" appearance="fill">
             <mat-label for="project-Description">Description</mat-label>
 
             <input class="whiteColor" matInput id="project-Description" [(ngModel)]="project.description"
@@ -38,8 +38,8 @@
         Resource</button>
     <button mat-raised-button color="accent" title="Add Model" (click)="openModelDialog()">Add Model</button>
 
-    <div class="container background">
-        <div class="mat-elevation-z8 first background">
+    <div>
+        <div>
             <mat-form-field appearance="standard">
                 <mat-label>Search resource</mat-label>
 
@@ -60,8 +60,8 @@
 
                 <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-                <mat-row class="mat-row" *matNoDataRow>
-                    <mat-cell class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</mat-cell>
+                <mat-row *matNoDataRow>
+                    <mat-cell colspan="4">No data matching the filter "{{input.value}}"</mat-cell>
                 </mat-row>
             </mat-table>
         </div>

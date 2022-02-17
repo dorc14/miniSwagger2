@@ -1,6 +1,6 @@
 <div class="container background">
     <div class="mat-elevation-z8 first background">
-        <mat-accordion class="example-headers-align">
+        <mat-accordion class="headers-align">
             <mat-expansion-panel *ngFor="let project of projects  index as i;" [expanded]="step === i"
                 (opened)="setStep(i)" hideToggle>
                 <mat-expansion-panel-header>

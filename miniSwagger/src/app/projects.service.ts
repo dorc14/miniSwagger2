@@ -9,8 +9,6 @@ import { Project } from 'src/project';
 export class ProjectsService {
   projects: Project[] = JSON.parse(localStorage.getItem('Projects') || '[]');
 
-  constructor() { }
-
   addProject(name: string, baseUrl: string, description: string): void {
 
     // Generate Id

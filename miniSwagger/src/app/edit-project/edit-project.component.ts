@@ -10,19 +10,18 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./edit-project.component.css']
 })
 export class EditProjectComponent implements OnInit {
-
-  constructor(private projectService: ProjectsService,
-    public dialogRef: MatDialogRef<EditProjectComponent>) { }
-
   public project: Project | undefined;
   public projectId: string = ''
 
+  constructor(private projectService: ProjectsService,
+    public dialogRef: MatDialogRef<EditProjectComponent>) { }
+    
   ngOnInit(): void {
     this.getProject()
   }
 
   getProject(): void {
-    const Id : string = this.projectId
+    const Id: string = this.projectId
     this.projectService.getProject(Id).subscribe(result => {
       this.project = result
     })

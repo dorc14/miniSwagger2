@@ -36,7 +36,7 @@ export class ProjectDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getResourcesToProject()
-    this.getModelToProject()
+    this.setModelToProject()
     this.filterData = this.resources
   }
 
@@ -77,8 +77,12 @@ export class ProjectDetailComponent implements OnInit {
     }
   }
 
-  getModelToProject() {
+  setModelToProject() {
     const newModel = this.modelService.getModelByProjectId(this.projectId)
+    this.deleteModelProperty(newModel)
+  }
+
+  deleteModelProperty(newModel: object) {
     this.model = { ...newModel }
     delete this.model.projectId
   }
