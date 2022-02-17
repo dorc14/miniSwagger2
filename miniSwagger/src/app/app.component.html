@@ -1,0 +1,17 @@
+<div class="navbar">
+    <mat-toolbar color="primary">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>tasks</mat-icon>
+                <span routerLink="/projects">Projects</span>
+            </button>
+        </mat-menu>
+        <span>Mini Swagger</span>
+    </mat-toolbar>
+</div>
+<div class="router">
+    <router-outlet></router-outlet>
+</div>

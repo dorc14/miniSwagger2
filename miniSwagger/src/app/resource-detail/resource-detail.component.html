@@ -1,0 +1,40 @@
+<div *ngIf="resource" else elseBlock>
+    <h1> Welcome to Resource Page!!</h1>
+
+    <h2> Update your Resource information</h2>
+    <div>
+        <mat-form-field color="accent" class="w-100" appearance="fill">
+            <mat-label for="resource-name">Resource Name: </mat-label>
+
+            <input matInput id="resource-name" [(ngModel)]="resource.name" placeholder="Resource name" />
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field color="accent" class="w-100" appearance="fill">
+            <mat-label for="resource-type">Project Type: </mat-label>
+
+            <input matInput id="resource-type" [(ngModel)]="resource.type" placeholder="Resource type" />
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field color="accent" class="w-100" appearance="fill">
+            <mat-label for="resource-Description">Resource Description: </mat-label>
+
+            <input matInput matInput id="resource-Description" [(ngModel)]="resource.description"
+                placeholder="resource Description" />
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field color="accent" class="w-100" appearance="fill">
+            <mat-label for="resource-url">Resource url: </mat-label>
+            <input matInput id="resource-url" [(ngModel)]="resource.url" placeholder="resource url" />
+        </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="warn" title="delete project" (click)="deleteProject(resource.Id)">delete
+        Resource</button>
+    <button mat-raised-button color="primary" (click)="updateProject()">Update Project</button>
+</div>
+
+<ng-template #elseBlock>No Resource selected</ng-template>

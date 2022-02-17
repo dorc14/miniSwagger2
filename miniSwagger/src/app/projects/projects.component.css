@@ -1,0 +1,40 @@
+table {
+  width: 100%;
+  height: 50%;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+.background{
+  background-color: #424242;
+
+}
+.first{
+  height: 100%;
+  width: 100%;
+}
+
+.container{
+  height: 100%;
+  display: grid;
+  grid-template-rows: 80% 20%;
+}
+
+.button{
+  margin-left: 90%;
+}
+
+.headers-align .mat-expansion-panel-header-title,
+.headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}

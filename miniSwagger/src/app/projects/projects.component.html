@@ -1,0 +1,51 @@
+<div class="container background">
+    <div class="mat-elevation-z8 first background">
+        <mat-accordion class="headers-align">
+            <mat-expansion-panel *ngFor="let project of projects  index as i;" [expanded]="step === i"
+                (opened)="setStep(i)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title (click)="showProjectDetails(project.Id)">
+                        {{project.name}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        {{project.description}}
+                        <mat-icon>info</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="standard">
+                    <mat-label>Search resource</mat-label>
+
+                    <input matInput (keyup)="applyFilter($event)" placeholder="search resource" #input>
+                </mat-form-field>
+                <mat-table [dataSource]="filterData" class="mat-elevation-z8">
+                    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+                        <mat-header-cell mat-header-cell *matHeaderCellDef> {{column}} </mat-header-cell>
+
+                        <mat-cell matRipple matRipple mat-cell *matCellDef="let resource" (click)='openEditResourceDialog(resource.Id)'>
+                            {{resource[column]}}
+                        </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    
+                    <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+                <button mat-raised-button color="warn" title="delete project" (click)="deleteProject(project.Id)">Delete
+                    Project</button>
+                <button mat-raised-button color="accent" title="Edit project" (click)="openEditProjectDialog(project.Id)">Edit
+                    Project</button>
+                <button mat-raised-button color="accent" title="Add Resource"
+                    (click)="openAddResourceDialog(project.Id)">Add
+                    Resource</button>
+                <button mat-raised-button color="accent" title="Add Model" (click)="openModelDialog(project.Id)">Add
+                    Model</button>
+                <div *ngFor="let field of model | keyvalue">
+                    <b> {{field.key}}</b> : <b>{{field.value}}</b>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <button mat-raised-button #tooltip="matTooltip" matTooltip="Add Project" matTooltipHideDelay="100000" mat-fab
+        (click)="openAddProjectDialog()" class="button">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
